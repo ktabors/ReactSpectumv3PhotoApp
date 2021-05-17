@@ -9,66 +9,64 @@ const ImageRotate = (props) => {
   let { isFlipHorizontal, isFlipVertical, rotate } = filters;
 
   return (
-    <View maxHeight="100%" overflow="scroll">
-      <Flex
-        direction="row"
-        rowGap="size-300"
-        alignItems="center"
-        marginTop="size-100"
-        marginBottom="size-100"
+    <Flex
+      direction="row"
+      rowGap="size-300"
+      alignItems="center"
+      marginTop="size-100"
+      marginBottom="size-100"
+    >
+      <ActionButton
+        aria-label="Rotate counter clockwise"
+        isQuiet
+        onPress={() => {
+          setFilters({
+            ...filters,
+            rotate: rotate - 90
+          });
+        }}
       >
-        <ActionButton
-          aria-label="Rotate counter clockwise"
-          isQuiet
-          onPress={() => {
-            setFilters({
-              ...filters,
-              rotate: rotate - 90
-            });
-          }}
-        >
-          <RotateCCW />
-        </ActionButton>
-        <ActionButton
-          aria-label="Rotate clockwise"
-          isQuiet
-          onPress={(value) => {
-            setFilters({
-              ...filters,
-              rotate: rotate + 90
-            });
-          }}
-        >
-          <RotateCW />
-        </ActionButton>
-        <ToggleButton
-          aria-label="Flip horizontal"
-          isQuiet
-          isSelected={isFlipHorizontal}
-          onChange={(value) => {
-            setFilters({
-              ...filters,
-              isFlipHorizontal: value
-            });
-          }}
-        >
-          <FlipHorizontal />
-        </ToggleButton>
-        <ToggleButton
-          aria-label="Flip vertical"
-          isQuiet
-          isSelected={isFlipVertical}
-          onChange={(value) => {
-            setFilters({
-              ...filters,
-              isFlipVertical: value
-            });
-          }}
-        >
-          <FlipVertical />
-        </ToggleButton>
-      </Flex>
-    </View>
+        <RotateCCW />
+      </ActionButton>
+      <ActionButton
+        aria-label="Rotate clockwise"
+        isQuiet
+        onPress={(value) => {
+          setFilters({
+            ...filters,
+            rotate: rotate + 90
+          });
+        }}
+      >
+        <RotateCW />
+      </ActionButton>
+      <ToggleButton
+        aria-label="Flip horizontal"
+        isQuiet
+        isSelected={isFlipHorizontal}
+        onChange={(value) => {
+          setFilters({
+            ...filters,
+            isFlipHorizontal: value
+          });
+        }}
+      >
+        <FlipHorizontal />
+      </ToggleButton>
+      <ToggleButton
+        aria-label="Flip vertical"
+        isQuiet
+        isSelected={isFlipVertical}
+        onChange={(value) => {
+          setFilters({
+            ...filters,
+            isFlipVertical: value
+          });
+        }}
+      >
+        <FlipVertical />
+      </ToggleButton>
+    </Flex>
   );
 };
 
