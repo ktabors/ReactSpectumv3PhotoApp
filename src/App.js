@@ -24,26 +24,25 @@ export default function App() {
 
   let isMobile = useMediaQuery("(max-width: 700px)");
   let layoutDirection = isMobile ? "column" : "row";
-  let controlWidth = isMobile ? "100%" : "size-3000";
-  let mobileHeight = isMobile ? { height: "50%" } : {};
+  let controlWidth = isMobile ? "100%" : "300px";
 
   return (
-    <Flex direction={layoutDirection} height="100vh">
+    <Flex direction={layoutDirection} height="100%">
       <View
         backgroundColor="gray-50"
-        flex="1 1 auto"
+        flex="1 1 0"
         padding="size-200"
-        {...mobileHeight}
+        minHeight="0px"
+        minWidth="0px"
       >
         <ImageView filters={filters} />
       </View>
       <View
         backgroundColor="gray-100"
-        marginStart="size-100"
-        marginEnd="size-100"
-        flex="0 0 auto"
+        flex={isMobile ? "1 1 0" : "0 0 auto"}
+        minHeight="0px"
+        minWidth="0px"
         width={controlWidth}
-        {...mobileHeight}
       >
         <ImageControls filters={filters} setFilters={setFilters} />
       </View>

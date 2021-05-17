@@ -6,7 +6,7 @@ import App from "./App";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <Provider theme={darkTheme}>
+  <Provider theme={darkTheme} height="100%">
     <App />
   </Provider>,
   rootElement

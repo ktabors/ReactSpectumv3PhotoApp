@@ -10,7 +10,7 @@ import Properties from "@spectrum-icons/workflow/Properties";
 const ImageControls = (props) => {
   return (
     <Tabs aria-label="Image controls" height="100%">
-      <TabList>
+      <TabList marginStart="size-100" marginEnd="size-100">
         <Item key="edit">
           <Properties aria-label="Image edit" />
         </Item>
@@ -23,7 +23,7 @@ const ImageControls = (props) => {
       </TabList>
       <TabPanels minHeight="0px">
         <Item key="edit">
-          <View maxHeight="100%" overflow="scroll">
+          <View maxHeight="100%" overflow="auto">
             <ImageEdit {...props} />
           </View>
         </Item>
