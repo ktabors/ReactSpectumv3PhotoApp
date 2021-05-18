@@ -1,4 +1,5 @@
 import { Flex, Image } from "@adobe/react-spectrum";
+import { useEffect, useState } from "react";
 
 const ImageView = (props) => {
   let {
@@ -15,6 +16,21 @@ const ImageView = (props) => {
     saturate,
     sepia
   } = props.filters;
+
+  let [scale, setScale] = useState(1);
+  useEffect(() => {
+    var img = document.getElementById("rspLRimg").children[0];
+    if (rotate % 180 !== 0) {
+      setScale(
+        img.naturalWidth > img.naturalHeight
+          ? img.naturalHeight / img.naturalWidth
+          : 1
+      );
+    } else {
+      setScale(1);
+    }
+  }, [rotate]);
+
   let filterBrightness = ((brightness - -5) / (5 - -5)) * (200 - 0) + 0;
   let rgbaColor =
     "rgba(" +
@@ -34,6 +50,7 @@ const ImageView = (props) => {
   let filterOpacity = opacity * 100;
   let filterSaturate = ((saturate - -5) / (5 - -5)) * (200 - 0) + 0;
   let filterSepia = sepia * 100;
+
   let filter = {
     backgroundColor: rgbaColor,
     filter:
@@ -61,6 +78,8 @@ const ImageView = (props) => {
       filterFlipHorizontal +
       ") scaleY(" +
       filterFlipVertical +
+      ") scale(" +
+      scale +
       ")"
   };
 
