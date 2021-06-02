@@ -1,6 +1,8 @@
 import { Flex, Image } from "@adobe/react-spectrum";
 import { useEffect, useState } from "react";
 
+import "./ImageView.css";
+
 const ImageView = (props) => {
   let {
     brightness,
@@ -87,7 +89,7 @@ const ImageView = (props) => {
     <Flex justifyContent="center" alignItems="center" height="100%">
       <Image
         id="rspLRimg"
-        src="ca_poppies.jpg"
+        src={props.image.url}
         alt="White and orange California poppy plants"
         height="100%"
         width="100%"
