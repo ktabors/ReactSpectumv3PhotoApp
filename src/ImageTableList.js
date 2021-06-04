@@ -1,4 +1,4 @@
-import { ActionButton, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Grid, Heading, Image, SearchField, StatusLight, View } from "@adobe/react-spectrum";
+import { ActionButton, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Grid, Heading, Image, Meter, SearchField, StatusLight, View } from "@adobe/react-spectrum";
 import { Cell, Column, Row, TableBody, TableHeader, Table } from '@react-spectrum/table'
 import Edit from '@spectrum-icons/workflow/Edit';
 import { EditImageDialog } from "./EditImageDialog";
@@ -51,14 +51,14 @@ const ImageTableList = (props) => {
           if (sortDescriptor.direction === 'descending') {
             cmp *= -1;
           }
-          console.log('cmp', cmp);
           return cmp;
         })
       };
     }
   });
 
-  // let fileTypeFilteredItems = useMemo(() => list.items.filter(item => contains(item.filename, imageTypeFilter)), [list.items, imageTypeFilter, contains]);
+  let statusCount = (list.items.filter((item) => item.filters)).length;
+
   let filteredItems = useMemo(() => list.items.filter(item => {
     if (imageTypeFilter.indexOf('jpg') !== -1 && item.filename.endsWith('.jpg')) {
       return contains(item.filename, filterText);
@@ -77,7 +77,7 @@ const ImageTableList = (props) => {
       columns={['auto']}
       rows={['size-1000', 'auto']}>
       <View gridArea="header">
-        <Flex direction="row" gap="size-100">
+        <Flex direction="row" gap="size-100" alignItems="center">
           <SearchField
             marginStart={'size-200'}
             marginBottom={'size-200'}
@@ -87,7 +87,7 @@ const ImageTableList = (props) => {
             placeholder={'Search by name'}
             value={filterText}
             onChange={(onChange)} />
-          <ButtonGroup alignSelf="center">
+          <ButtonGroup>
             <DialogTrigger type="popover">
               <ActionButton aria-label="table filter options">
                 <Filter />
@@ -107,6 +107,11 @@ const ImageTableList = (props) => {
               </Dialog>
             </DialogTrigger>
           </ButtonGroup>
+          <Meter
+            label="Images Edited"
+            maxValue={list.items.length}
+            value={statusCount}
+            variant="positive" />
         </Flex>
       </View>
       <View gridArea="content">

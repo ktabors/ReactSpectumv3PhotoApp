@@ -1,8 +1,15 @@
-import { AlertDialog, Button, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Form, Heading, Item, NumberField, Picker, Radio, RadioGroup, Switch, Text, TextArea, TextField} from "@adobe/react-spectrum";
-import { useState } from "react";
+import { AlertDialog, Button, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Form, Heading, Item, NumberField, Picker, ProgressBar, Radio, RadioGroup, Switch, Text, TextArea, TextField} from "@adobe/react-spectrum";
+import { useEffect, useState } from "react";
 
 export function EditImageDialog(props) {
   let [form, setForm] = useState({});
+  let [timer, setTimer] = useState(0);
+
+  useEffect(() => {
+    if (timer < 100) {
+      setTimeout(() => setTimer(timer + 1), 1000);
+    }
+  });
 
   return (
     <Dialog>
@@ -11,6 +18,7 @@ export function EditImageDialog(props) {
       <Content>
         <Text>Kitchen sink</Text>
         <Form width="100%">
+          <ProgressBar label="Please complete before the time runs out" value={timer} />
           <TextField label="Filename" autofocus onChange={(value) => {
               setForm({
                 ...form,
@@ -93,9 +101,10 @@ export function EditImageDialog(props) {
                 primaryActionLabel="Close">
                 <Content>
                   <Flex direction="column" gap="size-100">
+                    <ProgressBar label="Review data" isIndeterminate />
                     <Text>Filename: {form.filename}</Text>
                     <Text>Alt tag: {form.alt}</Text>
-                    <Text>Adjust: {form.adjust.join(', ')}</Text>
+                    <Text>Adjust: {form.adjust && form.adjust.join(', ')}</Text>
                     <Text>Width: {form.width}</Text>
                     <Text>Height: {form.height}</Text>
                     <Text>Resolution: {form.resolution}</Text>

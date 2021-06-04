@@ -1,6 +1,10 @@
-import { ActionGroup, Button, ButtonGroup, Content, Dialog, Divider, Flex, Heading, Item, Text, TextArea, TextField, Well} from "@adobe/react-spectrum";
+import { ActionButton, ActionGroup, Button, ButtonGroup, Content, Dialog, Divider, Flex, Heading, Item, Keyboard, Menu, MenuTrigger, Section, Text, TextArea, TextField, Well} from "@adobe/react-spectrum";
 import { ComboBox, Item as ComboBoxItem } from '@react-spectrum/combobox'
+import Copy from "@spectrum-icons/workflow/Copy";
+import Cut from "@spectrum-icons/workflow/Cut";
 import { Item as TabItem, TabList, TabPanels, Tabs } from "@react-spectrum/tabs";
+import Paste from "@spectrum-icons/workflow/Paste";
+import Redo from "@spectrum-icons/workflow/Redo";
 import TagBold from "@spectrum-icons/workflow/TagBold";
 import TagItalic from "@spectrum-icons/workflow/TagItalic";
 import TagUnderline from "@spectrum-icons/workflow/TagUnderline";
@@ -9,6 +13,7 @@ import TextAlignJustify from "@spectrum-icons/workflow/TextAlignJustify";
 import TextAlignLeft from "@spectrum-icons/workflow/TextAlignLeft";
 import TextAlignRight from "@spectrum-icons/workflow/TextAlignRight";
 import TextStrikethrough from "@spectrum-icons/workflow/TextStrikethrough";
+import Undo from "@spectrum-icons/workflow/Undo";
 import { useState } from "react"
 
 let fonts = [
@@ -33,6 +38,7 @@ export function TextEditorModal(props) {
   let [fontFilters, setFontFilters] = useState(new Set([]));
   let [alignFilters, setAlignFilters] = useState(new Set(['left']));
   let [fontFamily, setFontFamily] = useState('adobe-clean-ux,adobe-clean,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif');
+  let [edit, setEdit] = useState('');
 
   let cssFilterStyles = {
     fontFamily: fontFamily,
@@ -106,6 +112,40 @@ export function TextEditorModal(props) {
             onSelectionChange={setFontFamily}>
             {(item) => <ComboBoxItem key={item.cssValue}>{item.name}</ComboBoxItem>}
           </ComboBox>
+          <MenuTrigger>
+            <ActionButton>Edit</ActionButton>
+            <Menu onAction={(key) => setEditorValue(editorValue + ' ' + key)}>
+              <Section aria-label="Edit commands section 1">
+                <Item key="undo" textValue="undo">
+                  <Undo size="S" />
+                  <Text>Undo</Text>
+                  <Keyboard>⌘Z</Keyboard>
+                </Item>
+                <Item key="redo" textValue="redo">
+                  <Redo size="S" />
+                  <Text>Redo</Text>
+                  <Keyboard>⌘Y</Keyboard>
+                </Item>
+              </Section>
+              <Section aria-label="Edit commands section 2">
+                <Item key="cut" textValue="cut">
+                  <Cut size="S" />
+                  <Text>Cut</Text>
+                  <Keyboard>⌘X</Keyboard>
+                </Item>
+                <Item key="copy" textValue="copy">
+                  <Copy size="S" />
+                  <Text>Copy</Text>
+                  <Keyboard>⌘C</Keyboard>
+                </Item>
+                <Item key="paste" textValue="paste">
+                  <Paste size="S" />
+                  <Text>Paste</Text>
+                  <Keyboard>⌘V</Keyboard>
+                </Item>
+              </Section>
+            </Menu>
+          </MenuTrigger>
         </Flex>
         <Tabs height="80%">
           <TabList>
