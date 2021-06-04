@@ -27,7 +27,9 @@ let items = [
   {id: 'zy67890', url: 'Ziggy.jpg', filename: 'Ziggy.jpg', alt: 'Ziggy a brown striped bantam chick', width: 1007, height: 1343},
   {id: 'fp32457', url: 'flower_patch.png', filename: 'flower_patch.jpg', alt: 'A flower patch of California native plants', width: 2016, height: 1512},
   {id: 'po43526', url: 'PickledOnions.jpg', filename: 'PickledOnions.jpg', alt: 'Fermented red onions', width: 375, height: 500},
-  {id: 'ff32497', url: 'flower_focaccia.jpg', filename: 'flower_focaccia.jpg', alt: 'Focaccia decorated with edible plant like a garden scene', width: 768, height: 1024}
+  {id: 'ff32497', url: 'flower_focaccia.jpg', filename: 'flower_focaccia.jpg', alt: 'Focaccia decorated with edible plant like a garden scene', width: 768, height: 1024},
+  {id: 'tp34529', url: 'two_pizzas.png', filename: 'two_pizzas.png', alt: 'Two sourdough pizzas', width: 500, height: 666},
+  {id: 'aa89203', url: 'square_adobe_art.png', filename: 'square_adobe_art.png', alt: 'Styled product logo wall art in Adobe office', width: 1080, height: 1080}
 ];
 
 export default function App() {
