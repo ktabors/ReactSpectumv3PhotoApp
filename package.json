@@ -7,6 +7,7 @@
   "dependencies": {
     "@adobe/react-spectrum": "^3.10.0",
     "@react-spectrum/color": "3.0.0-beta.2",
+    "@react-spectrum/combobox": "3.0.0-beta.1",
     "@react-spectrum/table": "3.0.0-alpha.12",
     "@react-spectrum/tabs": "3.0.0-rc.0",
     "@react-spectrum/utils": "3.5.2",

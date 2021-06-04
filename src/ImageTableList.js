@@ -1,4 +1,4 @@
-import { ActionButton, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Grid, Heading, Image, SearchField, View } from "@adobe/react-spectrum";
+import { ActionButton, ButtonGroup, Checkbox, CheckboxGroup, Content, Dialog, DialogTrigger, Divider, Flex, Grid, Heading, Image, SearchField, StatusLight, View } from "@adobe/react-spectrum";
 import { Cell, Column, Row, TableBody, TableHeader, Table } from '@react-spectrum/table'
 import Edit from '@spectrum-icons/workflow/Edit';
 import { EditImageDialog } from "./EditImageDialog";
@@ -15,7 +15,8 @@ let columns = [
   {name: 'Filename', key: 'filename'},
   {name: 'Width', key: 'width', width: 100},
   {name: 'Height', key: 'height', width: 100},
-  {name: 'Action', key: 'action', width: 100}
+  {name: 'Action', key: 'action', width: 100},
+  {name: 'Status', key: 'status', width: 100}
 ];
 
 const ImageTableList = (props) => {
@@ -154,6 +155,8 @@ const ImageTableList = (props) => {
                           )}
                         </DialogTrigger>
                       </Cell>);
+                  } else if (key === 'status') {
+                    return (<Cell>{<StatusLight variant={item.filters ? 'positive' : 'negative'}>Edited</StatusLight>}</Cell>)
                   } else {
                     return (<Cell>{item[key]}</Cell>);
                   }
