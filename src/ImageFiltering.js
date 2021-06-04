@@ -1,5 +1,11 @@
-import { ActionButton, Breadcrumbs, Flex, Item, View } from "@adobe/react-spectrum";
-import Close from '@spectrum-icons/workflow/Close';
+import {
+  ActionButton,
+  Breadcrumbs,
+  Flex,
+  Item,
+  View
+} from "@adobe/react-spectrum";
+import Close from "@spectrum-icons/workflow/Close";
 import { ImageControls } from "./ImageControls";
 import { ImageView } from "./ImageView";
 import { useState } from "react";
@@ -20,13 +26,24 @@ export function ImageFiltering(props) {
 
   return (
     <>
-      <View backgroundColor="gray-200" height="48px" borderBottomColor="gray-50" borderBottomWidth="2px">
+      <View
+        backgroundColor="gray-200"
+        height="48px"
+        borderBottomColor="gray-50"
+        borderBottomWidth="2px"
+      >
         <Flex height="100%">
           <Breadcrumbs alignSelf="center" isDisabled flexGrow="1">
             <Item key="images">Images</Item>
             <Item key="filename">{props.selectedImage.filename}</Item>
           </Breadcrumbs>
-          <ActionButton isQuiet onClick={props.onClose} alignSelf="center" right="0px" position="absolute">
+          <ActionButton
+            isQuiet
+            onClick={props.onClose}
+            alignSelf="center"
+            right="0px"
+            position="absolute"
+          >
             <Close />
           </ActionButton>
         </Flex>

@@ -1,8 +1,32 @@
-import { ActionButton, ActionGroup, Button, ButtonGroup, Content, Dialog, Divider, Flex, Heading, Item, Keyboard, Menu, MenuTrigger, Section, Text, TextArea, TextField, Well} from "@adobe/react-spectrum";
-import { ComboBox, Item as ComboBoxItem } from '@react-spectrum/combobox'
+import {
+  ActionButton,
+  ActionGroup,
+  Button,
+  ButtonGroup,
+  Content,
+  Dialog,
+  Divider,
+  Flex,
+  Heading,
+  Item,
+  Keyboard,
+  Menu,
+  MenuTrigger,
+  Section,
+  Text,
+  TextArea,
+  TextField,
+  Well
+} from "@adobe/react-spectrum";
+import { ComboBox, Item as ComboBoxItem } from "@react-spectrum/combobox";
 import Copy from "@spectrum-icons/workflow/Copy";
 import Cut from "@spectrum-icons/workflow/Cut";
-import { Item as TabItem, TabList, TabPanels, Tabs } from "@react-spectrum/tabs";
+import {
+  Item as TabItem,
+  TabList,
+  TabPanels,
+  Tabs
+} from "@react-spectrum/tabs";
 import Paste from "@spectrum-icons/workflow/Paste";
 import Redo from "@spectrum-icons/workflow/Redo";
 import TagBold from "@spectrum-icons/workflow/TagBold";
@@ -14,38 +38,47 @@ import TextAlignLeft from "@spectrum-icons/workflow/TextAlignLeft";
 import TextAlignRight from "@spectrum-icons/workflow/TextAlignRight";
 import TextStrikethrough from "@spectrum-icons/workflow/TextStrikethrough";
 import Undo from "@spectrum-icons/workflow/Undo";
-import { useState } from "react"
+import { useState } from "react";
 
 let fonts = [
-  {id: 1, name: 'Serif', cssValue: 'serif'},
-  {id: 2, name: 'Sans serif', cssValue: 'sans-serif'},
-  {id: 3, name: 'Monospace', cssValue: 'monospace'},
-  {id: 4, name: 'Cursive', cssValue: 'cursive'},
-  {id: 5, name: 'Fantasy', cssValue: 'fantasy'},
-  {id: 6, name: 'System-ui', cssValue: 'system-ui'},
-  {id: 7, name: 'UI erif', cssValue: 'ui-serif'},
-  {id: 8, name: 'UI sans serif', cssValue: 'ui-sans-serif'},
-  {id: 9, name: 'UI monospace', cssValue: 'ui-monospace'},
-  {id: 10, name: 'UI rounded', cssValue: 'ui-rounded'},
-  {id: 11, name: 'Emoji', cssValue: 'emoji'},
-  {id: 12, name: 'Math', cssValue: 'math'},
-  {id: 13, name: 'Fangsong', cssValue: 'fangsong'},
-  {id: 13, name: 'Adobe clean', cssValue: 'adobe-clean-ux,adobe-clean,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif'}
+  { id: 1, name: "Serif", cssValue: "serif" },
+  { id: 2, name: "Sans serif", cssValue: "sans-serif" },
+  { id: 3, name: "Monospace", cssValue: "monospace" },
+  { id: 4, name: "Cursive", cssValue: "cursive" },
+  { id: 5, name: "Fantasy", cssValue: "fantasy" },
+  { id: 6, name: "System-ui", cssValue: "system-ui" },
+  { id: 7, name: "UI erif", cssValue: "ui-serif" },
+  { id: 8, name: "UI sans serif", cssValue: "ui-sans-serif" },
+  { id: 9, name: "UI monospace", cssValue: "ui-monospace" },
+  { id: 10, name: "UI rounded", cssValue: "ui-rounded" },
+  { id: 11, name: "Emoji", cssValue: "emoji" },
+  { id: 12, name: "Math", cssValue: "math" },
+  { id: 13, name: "Fangsong", cssValue: "fangsong" },
+  {
+    id: 13,
+    name: "Adobe clean",
+    cssValue:
+      "adobe-clean-ux,adobe-clean,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
+  }
 ];
 
 export function TextEditorModal(props) {
-  let [editorValue, setEditorValue] = useState('Why is focus hosed');
+  let [editorValue, setEditorValue] = useState("Why is focus hosed");
   let [fontFilters, setFontFilters] = useState(new Set([]));
-  let [alignFilters, setAlignFilters] = useState(new Set(['left']));
-  let [fontFamily, setFontFamily] = useState('adobe-clean-ux,adobe-clean,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif');
-  let [edit, setEdit] = useState('');
+  let [alignFilters, setAlignFilters] = useState(new Set(["left"]));
+  let [fontFamily, setFontFamily] = useState(
+    "adobe-clean-ux,adobe-clean,Source Sans Pro,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif"
+  );
+  let [edit, setEdit] = useState("");
 
   let cssFilterStyles = {
     fontFamily: fontFamily,
-    fontStyle: fontFilters.has('italic') ? 'italic' : 'normal',
-    fontWeight: fontFilters.has('bold') ? 'bold' : 'normal',
+    fontStyle: fontFilters.has("italic") ? "italic" : "normal",
+    fontWeight: fontFilters.has("bold") ? "bold" : "normal",
     textAlign: [...alignFilters],
-    textDecoration: (fontFilters.has('underline') ? 'underline' : '') + (fontFilters.has('strike') ? ' line-through' : '')
+    textDecoration:
+      (fontFilters.has("underline") ? "underline" : "") +
+      (fontFilters.has("strike") ? " line-through" : "")
   };
 
   return (
@@ -62,7 +95,8 @@ export function TextEditorModal(props) {
             density="compact"
             isEmphasized
             selectedKeys={fontFilters}
-            onSelectionChange={setFontFilters}>
+            onSelectionChange={setFontFilters}
+          >
             <Item key="bold" aria-label="Bold" textValue="bold">
               <TagBold />
             </Item>
@@ -85,7 +119,8 @@ export function TextEditorModal(props) {
             density="compact"
             isEmphasized
             selectedKeys={alignFilters}
-            onSelectionChange={setAlignFilters}>
+            onSelectionChange={setAlignFilters}
+          >
             <Item key="left" textValue="left">
               <TextAlignLeft />
               <Text>Align Left</Text>
@@ -109,12 +144,15 @@ export function TextEditorModal(props) {
             labelAlign="end"
             defaultItems={fonts}
             selectedKey={fontFamily}
-            onSelectionChange={setFontFamily}>
-            {(item) => <ComboBoxItem key={item.cssValue}>{item.name}</ComboBoxItem>}
+            onSelectionChange={setFontFamily}
+          >
+            {(item) => (
+              <ComboBoxItem key={item.cssValue}>{item.name}</ComboBoxItem>
+            )}
           </ComboBox>
           <MenuTrigger>
             <ActionButton>Edit</ActionButton>
-            <Menu onAction={(key) => setEditorValue(editorValue + ' ' + key)}>
+            <Menu onAction={(key) => setEditorValue(editorValue + " " + key)}>
               <Section aria-label="Edit commands section 1">
                 <Item key="undo" textValue="undo">
                   <Undo size="S" />
@@ -154,10 +192,18 @@ export function TextEditorModal(props) {
           </TabList>
           <TabPanels>
             <TabItem>
-              <TextArea width="100%" height="100%" value={editorValue} onChange={setEditorValue} aria-label="WYSIWYG simple text editor" />
+              <TextArea
+                width="100%"
+                height="100%"
+                value={editorValue}
+                onChange={setEditorValue}
+                aria-label="WYSIWYG simple text editor"
+              />
             </TabItem>
             <TabItem>
-              <Well width="100%" UNSAFE_style={cssFilterStyles}>{editorValue}</Well>
+              <Well width="100%" UNSAFE_style={cssFilterStyles}>
+                {editorValue}
+              </Well>
             </TabItem>
           </TabPanels>
         </Tabs>
