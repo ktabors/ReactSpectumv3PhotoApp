@@ -22,7 +22,7 @@ import {
   Row,
   TableBody,
   TableHeader,
-  Table
+  TableView
 } from "@react-spectrum/table";
 import Edit from "@spectrum-icons/workflow/Edit";
 import { EditImageDialog } from "./EditImageDialog";
@@ -151,7 +151,7 @@ const ImageTableList = (props) => {
         </Flex>
       </View>
       <View gridArea="content">
-        <Table
+        <TableView
           aria-label="List of images to apply filters to"
           width="100%"
           height="100%"
@@ -222,7 +222,7 @@ const ImageTableList = (props) => {
               </Row>
             )}
           </TableBody>
-        </Table>
+        </TableView>
       </View>
     </Grid>
   );
