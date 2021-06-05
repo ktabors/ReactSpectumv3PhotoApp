@@ -130,10 +130,10 @@ export function EditImageDialog(props) {
               });
             }}
           >
-            <Radio value="dogs">Rotate left</Radio>
-            <Radio value="cats">Rotate right</Radio>
-            <Radio value="cats">Flip horizontal</Radio>
-            <Radio value="cats">Flip vertical</Radio>
+            <Radio value="left">Rotate left</Radio>
+            <Radio value="right">Rotate right</Radio>
+            <Radio value="horizontal">Flip horizontal</Radio>
+            <Radio value="vertical">Flip vertical</Radio>
           </RadioGroup>
           <Switch
             onChange={(value) => {
