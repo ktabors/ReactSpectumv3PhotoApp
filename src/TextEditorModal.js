@@ -63,7 +63,7 @@ let fonts = [
 ];
 
 export function TextEditorModal(props) {
-  let [editorValue, setEditorValue] = useState("Why is focus hosed");
+  let [editorValue, setEditorValue] = useState("This is a very simple fake what you see is what you get text editor. All buttons apply to the entire sting and the text editing functions add strings to the end of this text.");
   let [fontFilters, setFontFilters] = useState(new Set([]));
   let [alignFilters, setAlignFilters] = useState(new Set(["left"]));
   let [fontFamily, setFontFamily] = useState(
