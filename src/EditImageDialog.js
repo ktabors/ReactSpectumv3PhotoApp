@@ -32,7 +32,7 @@ export function EditImageDialog(props) {
     if (timer < 100) {
       setTimeout(() => setTimer(timer + 1), 1000);
     }
-  });
+  }, []);
 
   return (
     <Dialog>

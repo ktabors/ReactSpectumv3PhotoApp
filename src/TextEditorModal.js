@@ -13,6 +13,9 @@ import {
   Menu,
   MenuTrigger,
   Section,
+  TabList,
+  TabPanels,
+  Tabs,
   Text,
   TextArea,
   TextField,
@@ -21,12 +24,6 @@ import {
 import { ComboBox, Item as ComboBoxItem } from "@react-spectrum/combobox";
 import Copy from "@spectrum-icons/workflow/Copy";
 import Cut from "@spectrum-icons/workflow/Cut";
-import {
-  Item as TabItem,
-  TabList,
-  TabPanels,
-  Tabs
-} from "@react-spectrum/tabs";
 import Paste from "@spectrum-icons/workflow/Paste";
 import Redo from "@spectrum-icons/workflow/Redo";
 import TagBold from "@spectrum-icons/workflow/TagBold";
@@ -187,11 +184,11 @@ export function TextEditorModal(props) {
         </Flex>
         <Tabs height="80%">
           <TabList>
-            <TabItem>Edit</TabItem>
-            <TabItem>Preview</TabItem>
+            <Item>Edit</Item>
+            <Item>Preview</Item>
           </TabList>
           <TabPanels>
-            <TabItem>
+            <Item>
               <TextArea
                 width="100%"
                 height="100%"
@@ -199,12 +196,12 @@ export function TextEditorModal(props) {
                 onChange={setEditorValue}
                 aria-label="WYSIWYG simple text editor"
               />
-            </TabItem>
-            <TabItem>
+            </Item>
+            <Item>
               <Well width="100%" UNSAFE_style={cssFilterStyles}>
                 {editorValue}
               </Well>
-            </TabItem>
+            </Item>
           </TabPanels>
         </Tabs>
       </Content>

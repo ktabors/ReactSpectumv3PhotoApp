@@ -1,10 +1,9 @@
 import CropRotate from "@spectrum-icons/workflow/CropRotate";
-import { View } from "@adobe/react-spectrum";
+import { Item, TabList, TabPanels, Tabs, View } from "@adobe/react-spectrum";
 import Info from "@spectrum-icons/workflow/Info";
 import { ImageDetail } from "./ImageDetail";
 import { ImageEdit } from "./ImageEdit";
 import { ImageRotate } from "./ImageRotate";
-import { Item, TabList, TabPanels, Tabs } from "@react-spectrum/tabs";
 import Properties from "@spectrum-icons/workflow/Properties";
 
 const ImageControls = (props) => {
